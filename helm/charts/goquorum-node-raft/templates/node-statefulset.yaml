@@ -243,6 +243,9 @@ spec:
           - name: discovery
             containerPort: {{ .Values.node.goquorum.p2p.port }}
             protocol: UDP
+          - name: raft
+            containerPort: 53000
+            protocol: TCP
           - name: metrics
             containerPort: {{ .Values.node.goquorum.metrics.pprofport }}
             protocol: TCP

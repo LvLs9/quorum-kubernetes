@@ -45,6 +45,10 @@ spec:
       port: {{ .Values.node.goquorum.p2p.port }}
       targetPort: discovery
       protocol: UDP
+    - name: raft
+      port: 53000
+      targetPort: raft
+      protocol: TCP
     - name: metrics
       port: {{ .Values.node.goquorum.metrics.pprofport }}
       targetPort: metrics
