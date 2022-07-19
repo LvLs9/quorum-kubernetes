@@ -1,4 +1,3 @@
-
 {{- if eq .Values.cluster.provider "azure" }}
 
 ---
@@ -50,7 +49,7 @@ parameters:
 #   gidRangeEnd: "2000" # optional
 #   basePath: "/dynamic_provisioning" # optional
 
-{{- else }}
+{{- else if .Values.cluster.hostPathVolume }}
 
 ---
 apiVersion: v1
