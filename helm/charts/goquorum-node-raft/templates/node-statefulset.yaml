@@ -272,7 +272,7 @@ spec:
               --networkid {{ .Values.node.goquorum.networkId }} --nodiscover --ipcdisable --verbosity {{ .Values.node.goquorum.log.verbosity }} \
               --syncmode full --nousb \
               --nat extip:$POD_IP \
-              --raft --raftport 53000 --raftblocktime 300 --emitcheckpoints \
+              --raft --raftport 53000 --raftblocktime 300 --raftdnsenable --emitcheckpoints \
               --metrics --pprof --pprof.addr {{ .Values.node.goquorum.metrics.pprofaddr | quote }} --pprof.port {{ .Values.node.goquorum.metrics.pprofport }} \
               --port {{ .Values.node.goquorum.p2p.port }} \
           {{- if .Values.node.goquorum.rpc.enabled }}
