@@ -243,6 +243,9 @@ spec:
             - name: discovery
               containerPort: {{ .Values.node.goquorum.p2p.port }}
               protocol: UDP
+            - name: raft
+              containerPort: 53000
+              protocol: TCP
             - name: metrics
               containerPort: {{ .Values.node.goquorum.metrics.pprofport }}
               protocol: TCP
@@ -266,13 +269,11 @@ spec:
 
               geth \
               --datadir {{ .Values.node.goquorum.dataPath }} \
-              --nodiscover --ipcdisable \
-              --nat extip:$POD_IP \
-              --verbosity {{ .Values.node.goquorum.log.verbosity }} \
-              --istanbul.blockperiod {{ .Values.node.goquorum.miner.blockPeriod }} --mine --miner.threads {{ .Values.node.goquorum.miner.threads }} --miner.gasprice 0 --emitcheckpoints \
+              --networkid {{ .Values.node.goquorum.networkId }} --nodiscover --ipcdisable --verbosity {{ .Values.node.goquorum.log.verbosity }} \
               --syncmode full --nousb \
+              --nat extip:$POD_IP \
+              --raft --raftport 53000 --raftblocktime 300 --emitcheckpoints \
               --metrics --pprof --pprof.addr {{ .Values.node.goquorum.metrics.pprofaddr | quote }} --pprof.port {{ .Values.node.goquorum.metrics.pprofport }} \
-              --networkid {{ .Values.node.goquorum.networkId }} \
               --port {{ .Values.node.goquorum.p2p.port }} \
           {{- if .Values.node.goquorum.rpc.enabled }}
               --http --http.addr {{ .Values.node.goquorum.rpc.addr }} --http.port {{ .Values.node.goquorum.rpc.port }} --http.corsdomain {{ .Values.node.goquorum.rpc.corsDomain | quote }} --http.vhosts {{ .Values.node.goquorum.rpc.vHosts | quote }} --http.api {{ .Values.node.goquorum.rpc.api | quote }} \

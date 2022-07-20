@@ -67,13 +67,13 @@ node:
       port: 8545
       corsDomain: "*"
       vHosts: "*"
-      api: "admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft"
+      api: "admin,trace,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft"
       authenticationEnabled: false
     ws:
       enabled: true
       addr: "0.0.0.0"
       port: 8546
-      api: "admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft"
+      api: "admin,trace,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft"
       origins: "*"
       authenticationEnabled: false
     graphql:
