@@ -96,10 +96,10 @@ spec:
             value: {{ .Values.blockscout.port | quote }}
           - name: DATABASE_URL
             value: {{ .Values.blockscout.database_url }}
-          - name: POSTGRES_PASSWORD
-            value: {{ .Values.blockscout.postgres_password }}
-          - name: POSTGRES_USER
-            value: {{ .Values.blockscout.postgres_user }}
+{{/*          - name: POSTGRES_PASSWORD*/}}
+{{/*            value: {{ .Values.blockscout.postgres_password }}*/}}
+{{/*          - name: POSTGRES_USER*/}}
+{{/*            value: {{ .Values.blockscout.postgres_user }}*/}}
           - name: NETWORK
             value: {{ .Values.blockscout.network }}
           - name: SUBNETWORK
@@ -119,7 +119,7 @@ spec:
           - name: ETHEREUM_JSONRPC_WS_URL
             value: ws://{{ .Values.blockscout.ethereum_jsonrpc_endpoint }}:8546
           - name: SECRET_KEY_BASE
-            value: {{ .Values.blockscout.secret_key_base }}        
+            value: {{ .Values.blockscout.secret_key_base }}
         ports:
           - name: http
             containerPort: {{ .Values.blockscout.port }}
