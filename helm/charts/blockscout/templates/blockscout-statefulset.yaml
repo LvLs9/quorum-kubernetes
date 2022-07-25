@@ -120,6 +120,8 @@ spec:
             value: ws://{{ .Values.blockscout.ethereum_jsonrpc_endpoint }}:8546
           - name: SECRET_KEY_BASE
             value: {{ .Values.blockscout.secret_key_base }}
+          - name: ECTO_USE_SSL
+            value: 'false'
         ports:
           - name: http
             containerPort: {{ .Values.blockscout.port }}
